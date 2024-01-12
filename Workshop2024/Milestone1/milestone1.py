@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 
 def create_line_segment(angle, diam):
@@ -10,15 +11,23 @@ def create_line_segment(angle, diam):
 
     return [(x1, y1), (-x1, -y1)]
 
-# test cases
+
+def generate_points(lst, no_of_points):
+
+    x = np.linspace(lst[0][0], lst[1][0], no_of_points, endpoint=True)
+    y = np.linspace(lst[0][1], lst[1][1], no_of_points, endpoint=True)
+    mapped = zip(x, y)
+    return mapped
+
+# main
+
+# case 1
 
 
-testcase1 = create_line_segment(0, 300)
-testcase2 = create_line_segment(45, 300)
-testcase3 = create_line_segment(250, 200)
-testcase4 = create_line_segment(200, 150)
+WaferDiameter: 300
+NumberOfPoints: 30
+Angle: 0
 
-print(testcase1)
-print(testcase2)
-print(testcase3)
-print(testcase4)
+result = create_line_segment(Angle, WaferDiameter)
+
+ans = generate_points(result, NumberOfPoints)
